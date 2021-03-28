@@ -1,3 +1,3 @@
 import { Mongo } from 'meteor/mongo';
 
-export default new Mongo.Collection('books');
+export default new Mongo.Collection('subjects');

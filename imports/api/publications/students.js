@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 
 import Students from '../collections/Students.js';
+import Books from '../collections/books.js';
 
 if(Meteor.isServer){
   Students.allow({
@@ -12,7 +13,8 @@ if(Meteor.isServer){
     },
     update: function () {
       return true;
-    }
+    },
+    
   })
   Meteor.publish('students', function () {
     return Students.find();

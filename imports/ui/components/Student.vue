@@ -1,29 +1,38 @@
 <template>
   <div>
     <h2>Welcome to Gain Solutions!</h2>
-    <ul>
-      <li>
+
+    <h4>Task: Just add/edit/delete some information and show the information in a list using meteor and vue js</h4><br/>
+
         <form class="info-link-add">
-          <input type="text" v-model="name" name="name" placeholder="Name" required>
-          <input type="text" v-model="email" name="email" placeholder="Email" required>
-          <input type="text" v-model="phone" name="phone" placeholder="Phone" required>
-          <input type="text" v-model="dob" name="dob" placeholder="dob" required>
-          <input type="text" v-model="status" name="status" placeholder="status" required>
+          <input type="text" v-model="name" name="name" placeholder="Name" required> <br/><br/>
+          <input type="text" v-model="email" name="email" placeholder="Email" required><br/><br/>
+          <input type="text" v-model="phone" name="phone" placeholder="Phone" required><br/><br/>
+          <input type="text" v-model="dob" name="dob" placeholder="dob" required><br/><br/>
           <input type="submit" name="submit" @click="submit($event)" value="SAVE">
         </form>
-      </li>
+
+        <hr/>
+
+      <h3>List of all students</h3>
       <StudentList v-for="student in students" v-bind:key="student._id" v-bind:student="student" />
-    </ul>
+
+    <div>
+      <router-view></router-view>
+    </div>
+
   </div>
 </template>
 
 <script>
 import Students from '../../api/collections/Students.js'
+import BookList from '../../api/collections/books.js'
 import StudentList from '../components/StudentList.vue'
+import Books from '../components/Books.vue'
 
 export default {
   components: {
-    StudentList
+    StudentList,
   },
   data() {
     return {
@@ -31,7 +40,7 @@ export default {
       email: "",
       phone:"",
       dob:"",
-      status:"",
+      status:"1",
     }
   },
   meteor: {
@@ -64,5 +73,14 @@ export default {
 <style scoped>
   ul {
     font-family: monospace;
+  }
+  form{
+    text-align: center;
+  }
+  input{
+ 
+  }
+  h3{
+    text-align: center;
   }
 </style>
